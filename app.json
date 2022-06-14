@@ -4,11 +4,11 @@
     "slug": "App_Amaneciendo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo_amaneciendo.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/inicio.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FB8500"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
