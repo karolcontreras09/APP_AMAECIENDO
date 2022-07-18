@@ -7,11 +7,14 @@ import {
   StyleSheet,
   TextInput,
   ImageBackground,
-  ScrollView
+  ScrollView,
+  Icon
 } from "react-native";
 import axios from "axios";
-import { LogBox } from 'react-native';
+import { LogBox, Dimensions } from 'react-native';
 import env from "../env.json";
+
+const { Height } = Dimensions.get("window");
 
 export default function Registrate({}) {
   const navigation = useNavigation();
@@ -29,8 +32,12 @@ export default function Registrate({}) {
     try {
       if(nombre !== '' && direccion !== '' &&  usuario !== '' && contrasena !== '' && confirmar !== '') {
         if(contrasena === confirmar) {
-          await axios.post(`${env.host}/usuario/registro`, {nombre, direccion, usuario, contrasena });
-          navigation.navigate("zonas");
+          const resp = await axios.post(`${env.host}/usuario/registro`, {nombre, direccion, usuario, contrasena });
+          if(resp.data.message){
+            const messageSplit = resp.data.message.split("'");
+            if(messageSplit[0] === 'Duplicate entry ') setError("Este correo ya existe");
+            else setError("")
+          } else navigation.navigate("zonas");
         } else {
           setError("Las contraseñas no coinciden");
         }
@@ -48,8 +55,7 @@ export default function Registrate({}) {
       style={styles.ImageBackground}
       source={require("../assets/imagen/login.png")}
     >
-       <ScrollView style={styles.scrollView}>
-      <View style={styles.view}>
+    <ScrollView style={styles.scrollView}>
         <TextInput 
           placeholder="Nombre"
           style={styles.textInput} 
@@ -75,10 +81,11 @@ export default function Registrate({}) {
           value={contrasena} 
           />
         <TextInput 
-        placeholder="🔒 Confirmar contraseña" 
-        secureTextEntry style={styles.textInputone}
-        onChangeText={setConfirmar} 
-        value={confirmar} 
+          placeholder="🔒 Confirmar contraseña" 
+          secureTextEntry 
+          style={styles.textInputone}
+          onChangeText={setConfirmar} 
+          value={confirmar} 
         />
         <Text
             style={{
@@ -132,8 +139,6 @@ export default function Registrate({}) {
             Volver
           </Text>
         </TouchableOpacity>
-        
-      </View> 
       </ScrollView>
     </ImageBackground>
   );
@@ -141,13 +146,13 @@ export default function Registrate({}) {
 
 const styles = StyleSheet.create({
   ImageBackground: {
-    width: "100%",
-    height: "100%",
     justifyContent: "center",
+    flex: 1,
+    height: Height
   },
   
   view: {
-    marginTop: "74%",
+    marginTop: "75%",
   },
 
   textInput: {
@@ -156,7 +161,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: "90%",
     height: 50,
-    marginTop: "2%",
+    marginTop: "3%",
     marginLeft: "5%",
     marginRight: "50%",
     borderColor: 30,
@@ -169,10 +174,13 @@ const styles = StyleSheet.create({
     padding: 10,
     width: "90%",
     height: 50,
-    marginTop: "2%",
+    marginTop: "3%",
     marginLeft: "5%",
     marginRight: "50%",
     borderColor: 30,
     backgroundColor: "transparent",
   },
+  scrollView: {
+    marginTop: "75%"
+  }
 });

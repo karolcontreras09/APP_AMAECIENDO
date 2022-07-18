@@ -17,18 +17,18 @@ export default function Oestezona() {
       style={styles.Imagefondo}
       source={require("../assets/imagen/fondo.png")}
     >
-      <View style={styles.parent}>
-
         <Encabezado titulo="ESTANCOS DEL OESTE" />
 
-        <TouchableOpacity style={styles.boton_norte}>
+      <View style={styles.parent}>
+
+        <View style={styles.boton_norte}>
           <Image
             style={styles.mapasur}
             source={require("../assets/imagen/mapaoeste.jpeg")}
           ></Image>
-        </TouchableOpacity>
+        </View>
 
-        <TouchableOpacity onPress={() => navigation.navigate("oesteone")}>
+        <TouchableOpacity onPress={() => navigation.navigate("norteone")}>
           <Image
             style={styles.logo01}
             source={require("../assets/imagen/4.png")}
@@ -41,25 +41,29 @@ export default function Oestezona() {
 
 const styles = StyleSheet.create({
   Imagefondo: {
-    width: 413,
-    height: 735,
+    width: null,
+    height: null,
+    resizeMode: 'contain',
+    flex: 1
   },
   boton_norte: {
-    width: "50%",
-    height: "50%",
+    width: 180,
+    height: '60%'
   },
   mapasur: {
-    width: 380,
-    height: 630,
-    alignSelf: "center",
-    marginLeft: "100%",
+    width: 335,
+    height: 570,
+    marginRight: 10,
+    marginLeft: 20,
+    //resizeMode: "contain",
+      //marginBottom: 12,
   },
   tittle: {
+    fontSize: 20,
+    margin: 15,
     marginTop: "7%",
     textAlign: "center",
     color: "white",
-    fontSize: 20,
-    margin: 15,
     fontWeight: "bold",
   },
   logo01: {

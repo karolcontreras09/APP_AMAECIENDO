@@ -13,17 +13,16 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import env from "../env.json";
 import axios from "axios";
+
 export default function PagInicio({}) {
   const navigation = useNavigation();
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
 
   const handleSubmit = async () => {
-    console.error("Hola");
     try {
-      const resp = await axios.post(`${env.host}/login`, {email: user, password: pass});
+      await axios.post(`${env.host}/login`, {email: user, password: pass});
       navigation.navigate("zonas");
-      console.error("resp");
     } catch (e) {
       console.error(e.toString());
     }
@@ -158,7 +157,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: "90%",
     height: 50,
-    marginTop: "90%",
+    marginTop: "80%",
     marginLeft: "5%",
     marginRight: "50%",
     borderColor: 30,

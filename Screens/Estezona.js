@@ -18,23 +18,22 @@ export default function Estezona() {
       source={require("../assets/imagen/fondo.png")}
     >
       <View style={styles.parent}>
-    
-      <Encabezado titulo="ESTANCOS DEL ESTE" />
+        <Encabezado titulo="ESTANCOS DEL ESTE" />
 
-      <TouchableOpacity style={styles.boton_norte}>
-        <Image
-          style={styles.mapaeste}
-          source={require("../assets/imagen/mapaeste.jpeg")}
-        ></Image>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.boton_norte}>
+          <Image
+            style={styles.mapaeste}
+            source={require("../assets/imagen/mapaeste.jpeg")}
+          ></Image>
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate("esteone")}>
-        <Image
-          style={styles.logo02}
-          source={require("../assets/imagen/2.png")}
-        ></Image>
-      </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={() => navigation.navigate("norteone")}>
+          <Image
+            style={styles.logo02}
+            source={require("../assets/imagen/2.png")}
+          ></Image>
+        </TouchableOpacity>
+      </View>
     </ImageBackground>
   );
 }

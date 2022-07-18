@@ -1,5 +1,12 @@
 import React from "react";
-import { StyleSheet, View , ImageBackground, TextInput, TouchableOpacity,Text} from "react-native";
+import {
+  StyleSheet,
+  View,
+  ImageBackground,
+  TextInput,
+  TouchableOpacity,
+  Text,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Olvidocontraseña() {
@@ -11,7 +18,6 @@ export default function Olvidocontraseña() {
     >
       <View style={styles.view}>
         <TextInput placeholder="👤 Usuario" style={styles.textInput} />
-
 
         <TouchableOpacity
           onPress={() => navigation.navigate("recuperar")}
@@ -40,11 +46,11 @@ export default function Olvidocontraseña() {
   );
 }
 const styles = StyleSheet.create({
-    ImageBackground: {
-        height: "100%",
-        width: "100%",
-        justifyContent: "center",
-      },
+  ImageBackground: {
+    height: "100%",
+    width: "100%",
+    justifyContent: "center",
+  },
   view: {
     marginTop: "5%",
   },

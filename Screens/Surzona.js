@@ -20,15 +20,15 @@ export default function Surzona() {
     
       <View style={styles.parent}> 
     
-      <TouchableOpacity style={styles.boton_norte}>
+      <View style={styles.boton_norte}>
         <Image
           style={styles.mapasur}
           source={require("../assets/imagen/mapasur.jpeg")}
         ></Image>
-         </TouchableOpacity>
+         </View>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate("surone")}>
+          onPress={() => navigation.navigate("norteone")}>
           <Image
             style={styles.logo01}
             source={require("../assets/imagen/1.png")}
@@ -41,31 +41,33 @@ export default function Surzona() {
 
 const styles = StyleSheet.create({
   Imagefondo: {
-    width: 413,
-    height: 735,
+    width: null,
+    height: null,
+    resizeMode: 'contain',
+    flex: 1
   },
   boton_norte: {
-    width: '50%',
-    height: '50%'
+    width: 180,
+    height: '60%'
   },  
   mapasur: {
-    width: 380,
-    height: 630,
-    alignSelf: "center",
-    marginLeft: '100%',
+    width: 335,
+    height: 570,
+    marginRight: 10,
+    marginLeft: 20,
   },
   tittle: { 
-    marginTop: "7%",
+    margin: 15,
+     fontSize: 20,
+     marginTop: "7%",
     textAlign: "center",
     color: "white",
-    fontSize: 20,
-    fontWeight: 'bold', 
-    margin: 12,
+    fontWeight: 'bold',
   },
   logo01: {
     width: '10%',
     height: '32%',
     alignSelf: "center",
-    marginTop: "0%",
+    //marginTop: "0%",
   },
 });

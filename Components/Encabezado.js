@@ -26,13 +26,13 @@ const styles = StyleSheet.create({
     title: {
       fontWeight: "bold",
       textAlign: "center",
-      fontSize: 22,
+      fontSize: 18,
       position: "relative",
     },
     tittles: {
       textAlign: "center",
       color: "white",
-      fontSize: 25,
+      fontSize: 22,
       fontWeight: 'bold',
     },
     negrita: {

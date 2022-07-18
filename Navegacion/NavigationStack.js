@@ -3,17 +3,18 @@ import React from "react";
 //import Estancossur from "../Screens/Estancossur";
 import PagInicio from "../Screens/PagInicio";
 import Zonas from "../Screens/Zonas";
+import ZonaEstancos from "../Screens/ZonaEstancos";
 import Nortezona from "../Screens/Nortezona";
 import Oestezona from "../Screens/Oestezona";
 import Surzona from "../Screens/Surzona";
 import Estezona from "../Screens/Estezona";
-import Esteone from "../Screens/Esteone";
-import Estancosurone from "../Screens/Estancosurone";
+import Esteone from "../otras views/Esteone";
+import Estancosurone from "../otras views//Estancosurone";
 //import Estancosnorte from "../Screens/Estancosnorte";
 import Norteone from "../Screens/Norteone";
 //import Estancoseste from "../Screens/Estancoseste";
 //import Estancosoeste from "../Screens/Estancosoeste";
-import Oesteone from "../Screens/Oesteone"
+import Oesteone from "../otras views/Oesteone"
 import Registrate from "../Screens/Registrate";
 import Olvidocontraseña from "../Screens/Olvidocontraseña";
 import Recuperarcontra from "../Screens/Recuperarcontra";
@@ -53,6 +54,14 @@ export default function NavigationStack() {
           component={Zonas}
           options={{
             title: "ZONAS",
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="zonasEstancos"
+          component={ZonaEstancos}
+          options={{
+            title: "ZONA ESTANCOS",
             headerShown: false,
           }}
         />

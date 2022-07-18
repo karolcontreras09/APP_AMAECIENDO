@@ -1,14 +1,12 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
 import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
 
-export default function Zonas() {
-  const navigation = useNavigation();
+export default function Zonas({navigation}) {
   return (
     <View style={styles.parent}>
       <TouchableOpacity
         style={styles.boton_norte}
-        onPress={() => navigation.navigate("nortezona")}
+        onPress={() => navigation.push("zonasEstancos", { id_zona: 1 })}
       >
         <Image
           style={styles.fondo}
@@ -17,7 +15,7 @@ export default function Zonas() {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.boton_norte}
-        onPress={() => navigation.navigate("oestezona")}
+        onPress={() => navigation.push("zonasEstancos", { id_zona: 4 })}
       >
         <Image
           style={styles.fondo}
@@ -26,7 +24,7 @@ export default function Zonas() {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.boton_norte}
-        onPress={() => navigation.navigate("surzona")}
+        onPress={() => navigation.push("zonasEstancos", { id_zona: 2 })}
       >
         <Image
           style={styles.fondo}
@@ -35,7 +33,7 @@ export default function Zonas() {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.boton_norte}
-        onPress={() => navigation.navigate("estezona")}
+        onPress={() => navigation.push("zonasEstancos", { id_zona: 3 })}
       >
         <Image
           style={styles.fondo}
