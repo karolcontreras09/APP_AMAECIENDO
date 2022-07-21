@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ImageBackground,
   Image,
@@ -18,16 +18,15 @@ export default function ZonaEstancos({ route }) {
   const navigation = useNavigation();
   
   const { id_zona} = route.params;
- 
-
+  const [estancos, setEstancos]= useState([]);
 
   const consulta = async () => {
     try {
-      console.log(id_zona);
       const res = await axios.get(`${env.host}/zona/estancos/${id_zona}`);
+      setEstancos (res.data);
       console.log(res.data);
     } catch (e) {
-      console.log(es);
+      console.log(e);
     }
   };
 
@@ -35,7 +34,7 @@ export default function ZonaEstancos({ route }) {
     (async () => {
       await consulta();
     })()
-  });
+  }, []);
 
   return (
     <ImageBackground
@@ -44,14 +43,36 @@ export default function ZonaEstancos({ route }) {
     >
       <Encabezado titulo="ESTANCOS DEL NORTE" />
       <MapView
+        region={{latitude: 2.936511, longitude: -75.266694,  latitudeDelta: 0.01, longitudeDelta: 0.01}}
         style={styles.map}
       >
-        <Marker
-      
-          coordinate={{ latitude: 2.948526815506605, longitude: -75.2975463861876 }}
-          title="Prueba"
-          image={require("../assets/imagen/4.png")} onPress={() => navigation.navigate("norteone")}
+        {estancos.length >0 && estancos.map(el=> (
+          <Marker  
+          coordinate={{ latitude: el.latitud, longitude: el.longitud }}
+          title= {el.nombre_estanco}
+          image={require("../assets/imagen/001.png")} onPress={() => navigation.navigate("norteone", {id:el.id_estanco})}
         />
+        ))}
+        {/*<Marker  
+          coordinate={{ latitude: 2.936511, longitude: -75.266694 }}
+          title="Estanco Crobar"
+          image={require("../assets/imagen/001.png")} onPress={() => navigation.navigate("norteone", {id:1})}
+        />
+        <Marker
+          coordinate={{ latitude: 2.939693, longitude: -75.267940}}
+          title="Estanco Opium"
+          image={require("../assets/imagen/002.png")} onPress={() => navigation.navigate("norteone", {id:2})}
+        />
+           <Marker
+          coordinate={{ latitude: 2.921005, longitude: -75.271423}}
+          title="Estanco El Camino"
+          image={require("../assets/imagen/003.png")} onPress={() => navigation.navigate("norteone", {id:3})}
+        />
+               <Marker
+          coordinate={{ latitude: 2.945345, longitude: -75.299927}}
+          title="Estanco Lola Perez"
+          image={require("../assets/imagen/004.png")} onPress={() => navigation.navigate("norteone", {id:6})}
+  />*/}
       </MapView>
 
     </ImageBackground>
@@ -64,7 +85,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   map: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height
+    height: "85%",
+    width: "90%",
+    marginLeft: 18,
+    marginBottom: 20,
+     //Dimensions.get('window').width,
+     //Dimensions.get('window').height
   }
 });
