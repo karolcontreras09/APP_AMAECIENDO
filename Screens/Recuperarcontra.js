@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import React from "react";
 
@@ -14,6 +15,7 @@ export default function Recuperarcontra() {
       style={styles.ImageBackground}
       source={require("../assets/imagen/login.png")}
     >
+      <ScrollView style={styles.scrollView}> 
       <View style={styles.view}>
         <TextInput
           placeholder="Ingresa el codigo"
@@ -53,6 +55,7 @@ export default function Recuperarcontra() {
           </Text>
         </TouchableOpacity>
       </View>
+      </ScrollView>
     </ImageBackground>
   );
 }
@@ -63,7 +66,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   view: {
-    marginTop: "60%",
+    marginTop: "80%",
   },
   textInputone: {
     borderWidth: 1,

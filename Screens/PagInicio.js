@@ -76,17 +76,16 @@ export default function PagInicio({}) {
           // onPress={() => navigation.navigate("")}
           style={{
             backgroundColor: "gray",
-            padding: 10
-            ,
+            padding: 10,
             marginTop: "4%",
-            width: "55%",
+            width: "45%",
             alignSelf: "center",
             borderRadius: 10,
           }}
         >
           <Text
             style={{
-              fontSize: 18,
+              fontSize: 20,
               textAlign: "center",
               color: "white",
             }}
@@ -95,7 +94,7 @@ export default function PagInicio({}) {
             <Image 
             style={styles.google}
             source={require("../assets/imagen/marcas-y-logotipos.png")}/>  {" "}
-            Acceder con Google
+            Acceder
           </Text>
         </TouchableOpacity>
         
@@ -106,7 +105,7 @@ export default function PagInicio({}) {
             backgroundColor: "orange",
             padding: 10,
             marginTop: "4%",
-            width: "40%",
+            width: "45%",
             alignSelf: "center",
             borderRadius: 10,
           }}

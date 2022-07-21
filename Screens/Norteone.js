@@ -24,12 +24,13 @@ const DATA = [
 
 const { Height } = Dimensions.get("window");
 
-export default function Norteone() {
+export default function Norteone({route}) {
   const [estancos, setEstancos] = useState({});
 
   const obtenerEstanco = async () => {
     try {
-      const res = await axios.get(`${env.host}/estanco/5`);
+      console.log(route);
+      const res = await axios.get(`${env.host}/estanco/${route.params.id}`);
       setEstancos(res.data);
       console.log(res.data);
     } catch (e) {
@@ -56,7 +57,7 @@ export default function Norteone() {
       resizeMode="repeat"
     >
       <Text style={styles.title}> {JSON.stringify(estancos.data)} </Text>
-      <Encabezado titulo={estancos.nombre_estanco} firstIcon="menu" />
+      <Encabezado firstIcon="arrowleft" titulo={estancos.nombre_estanco} secondIcon="menu"  />
 
       <SafeAreaView style={styles.Container}>
         <ScrollView style={styles.scrollView}>
